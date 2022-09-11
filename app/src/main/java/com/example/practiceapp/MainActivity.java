@@ -2,10 +2,13 @@ package com.example.practiceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
     // A constant to use as a key for Intents
@@ -15,9 +18,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMessage(getApplicationContext());
+            }
+        });
     }
 
-    public void sendMessage(View view) {
+    public void sendMessage(Context view) {
 //         creating a new Intent, the current context and the activity to which the intent is supplied
 //         are taken as parameters
         Intent intent = new Intent(this, DisplayMessageActivity.class);
